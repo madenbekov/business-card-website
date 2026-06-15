@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: #000;
+}
+
+/* ================= CINEMA ================= */
+#cinema {
+  position: fixed;
+  inset: 0;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 999;
+}
+
+#cinema.active {
+  opacity: 1;
+}
+
+/* ================= INTRO ================= */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 1000;
+  animation: introFade 2.5s ease forwards;
+}
+
+@keyframes introFade {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* ================= LAYOUT ================= */
+.split {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= THEATRE (original vibe) ================= */
+.theatre {
+  flex: 1;
+  background: linear-gradient(135deg, #0d0d0d, #1e4fff);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.theatre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, #ff2e2e55, transparent 60%);
+}
+
+/* ================= DEV ================= */
+.dev {
+  flex: 1;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* MATRIX LAYER */
+.matrix {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  filter: brightness(1);
+  transition: filter 0.2s ease;
+}
+
+/* LEFT/RIGHT MATRIX CHAOS */
+.matrix::before,
+.matrix::after {
+  position: absolute;
+  top: -120%;
+  font-family: monospace;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  white-space: pre;
+}
+
+/* LEFT STREAM */
+.matrix::before {
+  left: 20%;
+  content: "1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0 1 1 0";
+  font-size: 18px;
+  color: #00ff66;
+  text-shadow: 0 0 10px #00ff66;
+  animation: rain1 3.5s linear infinite;
+}
+
+/* RIGHT STREAM */
+.matrix::after {
+  left: 65%;
+  content: "console.log('AI') 0101 class X {} return 0 system();";
+  font-size: 16px;
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+  animation: rain2 2.8s linear infinite;
+}
+
+@keyframes rain1 {
+  0% { transform: translateY(-120%); }
+  100% { transform: translateY(120%); }
+}
+
+@keyframes rain2 {
+  0% { transform: translateY(-140%); }
+  100% { transform: translateY(140%); }
+}
+
+/* ================= CENTER ================= */
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  text-align: center;
+  color: white;
+}
+
+/* avatar */
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: gray;
+  border: 3px solid white;
+  margin-bottom: 20px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+  transition: 0.3s;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+/* text */
+.name { font-size: 2rem; }
+.alt-name { opacity: 0.6; }
+
+/* buttons */
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.portfolio {
+  background: linear-gradient(90deg, #ff2e2e, #1e4fff);
+  color: white;
+}
+
+.resume {
+  background: black;
+  border: 1px solid #00ff66;
+  color: #00ff66;
+}
+
+.resume:hover {
+  box-shadow: 0 0 15px #00ff66;
+}
+
+/* ================= PAGE ================= */
+.page {
+  position: fixed;
+  inset: 0;
+  background: #050505;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s ease;
+  z-index: 50;
+}
+
+.page.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.back {
+  margin-top: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.matrix {
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.matrix {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* создаём "глубинный туман" */
+.matrix::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: inherit;
+  backdrop-filter: blur(2px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
