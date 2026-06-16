@@ -4,8 +4,7 @@ const resume = document.getElementById("resume");
 
 const toPortfolio = document.getElementById("toPortfolio");
 const toResume = document.getElementById("toResume");
-const backBtns = document.querySelectorAll(".back");
-
+const backBtns = document.querySelectorAll(".back-btn");
 const matrix = document.querySelector(".matrix");
 const theatre = document.querySelector(".theatre");
 const cinema = document.getElementById("cinema");
@@ -150,3 +149,26 @@ window.addEventListener("popstate", (e) => {
 /* init */
 if (location.hash === "#portfolio") show(portfolio);
 else if (location.hash === "#resume") show(resume);
+
+const avatars = document.querySelectorAll(".js-avatar");
+const overlay = document.getElementById("photoOverlay");
+
+avatars.forEach(av => {
+  av.addEventListener("click", () => {
+
+    // сначала "нажатие"
+    av.style.transform = "scale(0.9)";
+
+    setTimeout(() => {
+      av.style.transform = "";
+
+      // включаем fullscreen
+      overlay.classList.add("active");
+    }, 150);
+  });
+});
+
+// закрытие по клику на фон
+overlay.addEventListener("click", () => {
+  overlay.classList.remove("active");
+});
