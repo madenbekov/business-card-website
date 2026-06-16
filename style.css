@@ -420,3 +420,58 @@ body {
   transform: scale(1.08);
   box-shadow: 0 0 15px #39ff14;
 }
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .resume-grid {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .resume-left {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #39ff14;
+  }
+
+  .resume-right {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .resume-avatar,
+  .avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .resume-name {
+    font-size: 1.5rem;
+  }
+
+  .resume-role {
+    font-size: 0.9rem;
+  }
+
+  .timeline {
+    padding-left: 15px;
+  }
+
+  .job::before {
+    left: -22px;
+  }
+
+  .back-btn {
+    right: 15px;
+    bottom: 15px;
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+}
+
