@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   min-height: 100dvh;
   overflow-x: hidden;
   font-family: Arial, sans-serif;
@@ -49,13 +49,12 @@ body {
   z-index: 2;
 }
 
-/* ================= THEATRE (original vibe) ================= */
+/* ================= THEATRE ================= */
 .theatre {
   flex: 1;
   background: linear-gradient(135deg, #0d0d0d, #1e4fff);
   position: relative;
   overflow: hidden;
-  z-index: 1;
 }
 
 .theatre::after {
@@ -71,19 +70,19 @@ body {
   background: #000;
   position: relative;
   overflow: hidden;
-  z-index: 1;
 }
 
-/* MATRIX LAYER */
+/* ================= MATRIX ================= */
 .matrix {
   position: absolute;
   inset: 0;
   background: #000;
   filter: brightness(1);
   transition: filter 0.2s ease;
+  overflow: hidden;
 }
 
-/* LEFT/RIGHT MATRIX CHAOS */
+/* streams */
 .matrix::before,
 .matrix::after {
   position: absolute;
@@ -94,7 +93,6 @@ body {
   white-space: pre;
 }
 
-/* LEFT STREAM */
 .matrix::before {
   left: 20%;
   content: "1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0 1 1 0";
@@ -104,7 +102,6 @@ body {
   animation: rain1 3.5s linear infinite;
 }
 
-/* RIGHT STREAM */
 .matrix::after {
   left: 65%;
   content: "console.log('AI') 0101 class X {} return 0 system();";
@@ -124,6 +121,16 @@ body {
   100% { transform: translateY(140%); }
 }
 
+/* лёгкий туман */
+.matrix::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(2px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
 /* ================= CENTER ================= */
 .center {
   position: absolute;
@@ -138,7 +145,6 @@ body {
 }
 
 /* avatar */
-/* AVATAR */
 .avatar {
   width: 170px;
   height: 170px;
@@ -153,42 +159,29 @@ body {
   object-fit: cover;
 }
 
-/* ================= FULLSCREEN OVERLAY ================= */
+/* ================= FULLSCREEN IMAGE ================= */
 .photo-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   opacity: 0;
   pointer-events: none;
-
   transition: 0.6s ease;
   z-index: 9999;
 }
 
-/* ⚡ ВАЖНО: контейнер */
 .photo-overlay img {
-  width: auto;
-  height: auto;
-
   max-width: 90vw;
   max-height: 90vh;
-
-  object-fit: contain;
-
   border-radius: 20px;
-
   transform: scale(0.6);
   transition: 0.6s ease;
-
   box-shadow: 0 0 50px rgba(57,255,20,0.25);
 }
 
-/* ACTIVE STATE */
 .photo-overlay.active {
   opacity: 1;
   pointer-events: all;
@@ -199,11 +192,7 @@ body {
   transform: scale(1);
 }
 
-/* text */
-.name { font-size: 2rem; }
-.alt-name { opacity: 0.6; }
-
-/* buttons */
+/* ================= BUTTONS ================= */
 .buttons {
   margin-top: 25px;
   display: flex;
@@ -238,7 +227,7 @@ body {
   box-shadow: 0 0 15px #00ff66;
 }
 
-/* ================= PAGE ================= */
+/* ================= PAGE (FIXED LOGIC) ================= */
 .page {
   position: fixed;
   inset: 0;
@@ -248,55 +237,29 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+
   transition: 0.5s ease;
   z-index: 50;
 }
 
 .page.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: all;
 }
 
-.back {
-  margin-top: 30px;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 20px;
-}
-
-.matrix {
-  transition: filter 0.25s ease, transform 0.25s ease;
-}
-
-.matrix {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-/* создаём "глубинный туман" */
-.matrix::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: inherit;
-  backdrop-filter: blur(2px);
-  opacity: 0.15;
-  pointer-events: none;
-}
-
 /* ================= RESUME ================= */
-
 .resume {
   background: #050505;
 }
 
 .resume-grid {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* LEFT */
@@ -358,8 +321,8 @@ body {
 
 .about {
   margin-bottom: 30px;
-  opacity: 0.9;
   line-height: 1.5;
+  opacity: 0.9;
 }
 
 /* TIMELINE */
@@ -395,24 +358,15 @@ body {
   position: fixed;
   right: 25px;
   bottom: 25px;
-
   padding: 12px 18px;
-
   background: rgba(0, 0, 0, 0.75);
   border: 2px solid #39ff14;
-
   color: #39ff14;
   font-weight: 700;
   font-size: 14px;
-
   border-radius: 12px;
-
   cursor: pointer;
-
-  z-index: 1000;
-
   backdrop-filter: blur(8px);
-
   transition: 0.2s ease;
 }
 
@@ -422,17 +376,12 @@ body {
 }
 
 /* ================= MOBILE ================= */
-
 @media (max-width: 768px) {
 
-  body {
-    overflow-x: hidden;
-  }
-
   .resume-grid {
-  min-height: 100vh;
-  height: auto;
-}
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
   .resume-left {
     width: 100%;
@@ -473,20 +422,4 @@ body {
     font-size: 13px;
     padding: 10px 14px;
   }
-}
-
-.page {
-  visibility: hidden;
-}
-
-.page.active {
-  visibility: visible;
-}
-.page {
-  background: #050505;
-  overflow-y: auto;
-}
-
-html, body {
-  height: auto;
 }
