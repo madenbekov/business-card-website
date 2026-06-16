@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   height: 100vh;
   overflow: hidden;
@@ -49,7 +53,7 @@ body {
   z-index: 2;
 }
 
-/* ================= THEATRE (original vibe) ================= */
+/* ================= THEATRE ================= */
 .theatre {
   flex: 1;
   background: linear-gradient(135deg, #0d0d0d, #1e4fff);
@@ -74,16 +78,17 @@ body {
   z-index: 1;
 }
 
-/* MATRIX LAYER */
+/* ================= MATRIX (FIXED DUPLICATE) ================= */
 .matrix {
   position: absolute;
   inset: 0;
   background: #000;
+  overflow: hidden;
   filter: brightness(1);
   transition: filter 0.2s ease;
 }
 
-/* LEFT/RIGHT MATRIX CHAOS */
+/* LEFT/RIGHT STREAM */
 .matrix::before,
 .matrix::after {
   position: absolute;
@@ -94,7 +99,6 @@ body {
   white-space: pre;
 }
 
-/* LEFT STREAM */
 .matrix::before {
   left: 20%;
   content: "1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0 1 1 0";
@@ -104,7 +108,6 @@ body {
   animation: rain1 3.5s linear infinite;
 }
 
-/* RIGHT STREAM */
 .matrix::after {
   left: 65%;
   content: "console.log('AI') 0101 class X {} return 0 system();";
@@ -137,8 +140,7 @@ body {
   color: white;
 }
 
-/* avatar */
-/* AVATAR */
+/* ================= AVATAR ================= */
 .avatar {
   width: 140px;
   height: 140px;
@@ -153,42 +155,32 @@ body {
   object-fit: cover;
 }
 
-/* ================= FULLSCREEN OVERLAY ================= */
+/* ================= FULLSCREEN PHOTO ================= */
 .photo-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   opacity: 0;
   pointer-events: none;
-
   transition: 0.6s ease;
   z-index: 9999;
 }
 
-/* ⚡ ВАЖНО: контейнер */
 .photo-overlay img {
   width: auto;
   height: auto;
-
   max-width: 90vw;
   max-height: 90vh;
-
   object-fit: contain;
-
   border-radius: 20px;
-
   transform: scale(0.6);
   transition: 0.6s ease;
-
   box-shadow: 0 0 50px rgba(57,255,20,0.25);
 }
 
-/* ACTIVE STATE */
 .photo-overlay.active {
   opacity: 1;
   pointer-events: all;
@@ -199,11 +191,11 @@ body {
   transform: scale(1);
 }
 
-/* text */
+/* ================= TEXT ================= */
 .name { font-size: 2rem; }
 .alt-name { opacity: 0.6; }
 
-/* buttons */
+/* ================= BUTTONS ================= */
 .buttons {
   margin-top: 25px;
   display: flex;
@@ -259,37 +251,7 @@ body {
   pointer-events: all;
 }
 
-.back {
-  margin-top: 30px;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 20px;
-}
-
-.matrix {
-  transition: filter 0.25s ease, transform 0.25s ease;
-}
-
-.matrix {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-/* создаём "глубинный туман" */
-.matrix::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: inherit;
-  backdrop-filter: blur(2px);
-  opacity: 0.15;
-  pointer-events: none;
-}
-
 /* ================= RESUME ================= */
-
 .resume {
   background: #050505;
 }
@@ -309,41 +271,6 @@ body {
   border-right: 2px solid #39ff14;
 }
 
-.resume-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: gray;
-  margin-bottom: 20px;
-  border: 2px solid #39ff14;
-}
-
-.resume-name {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-.resume-role {
-  opacity: 0.7;
-  margin-bottom: 20px;
-}
-
-.resume-block {
-  margin-bottom: 25px;
-}
-
-.resume-block h3 {
-  color: #39ff14;
-  margin-bottom: 10px;
-}
-
-.mini-title {
-  margin-top: 10px;
-  font-weight: bold;
-  opacity: 0.8;
-}
-
-/* RIGHT */
 .resume-right {
   width: 70%;
   padding: 40px;
@@ -351,68 +278,21 @@ body {
   color: white;
 }
 
-.resume-right h2 {
-  color: #39ff14;
-  margin-bottom: 10px;
-}
-
-.about {
-  margin-bottom: 30px;
-  opacity: 0.9;
-  line-height: 1.5;
-}
-
-/* TIMELINE */
-.timeline {
-  border-left: 2px solid #39ff14;
-  padding-left: 20px;
-  margin-bottom: 30px;
-}
-
-.job {
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.job::before {
-  content: "";
-  position: absolute;
-  left: -28px;
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  background: #39ff14;
-  border-radius: 50%;
-}
-
-.year {
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-/* BACK BUTTON */
+/* ================= BACK BUTTON ================= */
 .back-btn {
   position: fixed;
   right: 25px;
   bottom: 25px;
-
   padding: 12px 18px;
-
   background: rgba(0, 0, 0, 0.75);
   border: 2px solid #39ff14;
-
   color: #39ff14;
   font-weight: 700;
   font-size: 14px;
-
   border-radius: 12px;
-
   cursor: pointer;
-
   z-index: 1000;
-
   backdrop-filter: blur(8px);
-
   transition: 0.2s ease;
 }
 
@@ -421,25 +301,21 @@ body {
   box-shadow: 0 0 15px #39ff14;
 }
 
-/* ================= MOBILE ================= */
-
+/* ================= MOBILE FIX ================= */
 @media (max-width: 768px) {
 
-  /* главный фикс */
-  html, body {
-    height: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
+  body {
+    height: auto !important;
+    overflow: auto !important;
   }
 
-  /* ВАЖНО: отпускаем экран */
   .page {
     position: relative !important;
+    inset: auto !important;
     height: auto !important;
-    min-height: 100vh;
+    min-height: 100vh !important;
   }
 
-  /* резюме становится обычной страницей */
   .resume-grid {
     display: block !important;
     height: auto !important;
@@ -452,23 +328,16 @@ body {
     position: relative !important;
   }
 
-  /* чтобы контент не “залипал” */
-  .resume-right {
-    padding: 20px;
-  }
-
+  .resume-right,
   .resume-left {
     padding: 20px;
   }
 
-  /* аватарка чуть меньше */
-  .avatar,
-  .resume-avatar {
+  .avatar {
     width: 100px;
     height: 100px;
   }
 
-  /* кнопка назад */
   .back-btn {
     right: 15px;
     bottom: 15px;
