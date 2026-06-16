@@ -23,7 +23,9 @@
   </div>
 
   <div class="center">
-    <div class="avatar"></div>
+    <div class="avatar js-avatar">
+  <img src="images/me.jpg" alt="avatar">
+</div>
 
     <h1 class="name">Бекмырза Маденбеков</h1>
     <div class="alt-name">MyrzaMaden</div>
@@ -44,11 +46,133 @@
 </section>
 
 <!-- RESUME -->
-<section id="resume" class="page">
-  <h1>Резюме</h1>
-  <p>Профессиональная часть: опыт, навыки, CV.</p>
-  <button class="back">← Назад</button>
+<section id="resume" class="page resume">
+
+  <div class="resume-grid">
+
+    <!-- LEFT COLUMN -->
+    <aside class="resume-left">
+
+      <div class="avatar js-avatar">
+  <img src="images/me.jpg" alt="avatar">
+</div>
+
+      <h1 class="resume-name">Бекмырза Маденбеков</h1>
+      <p class="resume-role">Студент-программист | Репетитор | Актёр</p>
+      <p>24.12.2004 г.р. (21 год)</p>
+      
+      <div class="resume-block">
+  <h3>Контакты</h3>
+
+  <p>📱 +996 501 336 291</p>
+
+  <p>Telegram: @MyrzaMaden</p>
+
+  <p>
+    GitHub:
+    <a href="https://github.com/madenbekov" target="_blank">github.com/madenbekov</a>
+  </p>
+
+  <p>
+    Instagram:
+    <a href="https://www.instagram.com/bekmyrzaashyraliev" target="_blank">bekmyrzaashyraliev</a>
+  </p>
+
+  <p>📍 Бишкек, ул. Турусбекова, 52</p>
+</div>
+
+      <div class="resume-block">
+  <h3>Навыки</h3>
+
+  <p class="mini-title">Организационные</p>
+  <p>Управление сменой</p>
+  <p>Работа с документацией</p>
+  <p>Координация команды</p>
+
+  <p class="mini-title">Коммуникационные</p>
+  <p>Работа с клиентами</p>
+  <p>Публичные выступления</p>
+  <p>Консультирование</p>
+
+  <p class="mini-title">Документооборот и офис</p>
+  <p>Работа с документацией (анкеты, заявления, базы данных)</p>
+  <p>MS Word</p>
+  <p>MS Excel</p>
+  <p>MS Office</p>
+
+  <p class="mini-title">Технические (базовый уровень)</p>
+  <p>HTML</p>
+  <p>CSS</p>
+  <p>JavaScript</p>
+  <p>C / C++ / C#</p>
+  <p>Git / GitHub</p>
+</div>
+
+      <div class="resume-block">
+  <h3>Языки</h3>
+  <p>Русский — C2</p>
+  <p>Кыргызский — B2</p>
+  <p>Английский — B1–B2</p>
+</div>
+
+    </aside>
+
+    <!-- RIGHT COLUMN -->
+    <main class="resume-right">
+
+      <h2>О себе</h2>
+      <p class="about">
+        Студент 3 курса направления «Программная инженерия» КРСУ.
+        Имею опыт в образовании, логистике, клиентской работе и административных задачах.
+        Быстро адаптируюсь и умею работать в условиях высокой нагрузки.
+      </p>
+
+      <h2>Опыт работы</h2>
+
+      <div class="timeline">
+
+  <div class="job">
+    <span class="year">февраль 2024 — май 2026</span>
+    <h3>Репетитор (Домашка Help)</h3>
+    <p>Индивидуальные занятия по математике, подготовка учеников, подбор учебных материалов</p>
+  </div>
+
+  <div class="job">
+    <span class="year">июнь 2024 — октябрь 2024</span>
+    <h3>Специалист приёмной комиссии КРСУ</h3>
+    <p>Консультирование абитуриентов, работа с документами, обработка заявлений и баз данных</p>
+  </div>
+
+  <div class="job">
+    <span class="year">июнь 2023 — август 2023</span>
+    <h3>Бригадир смены / кладовщик-комплектовщик</h3>
+    <p>Организация работы смены, контроль выполнения задач, координация складских процессов</p>
+  </div>
+
+  <div class="job">
+    <span class="year">май 2022 — август 2022</span>
+    <h3>Официант (кафе Dine, Ош)</h3>
+    <p>Обслуживание гостей, работа в условиях высокой нагрузки, решение конфликтных ситуаций</p>
+  </div>
+
+</div>
+
+      <h2>Образование</h2>
+      <p>КРСУ — Программная инженерия (3 курс)</p>
+
+      <h2>Дополнительно</h2>
+      <p>Театр, выступления, гастроли по Кыргызстану</p>
+
+      <button class="back-btn">← Назад</button>
+
+    </main>
+
+  </div>
 </section>
+
+<div class="photo-overlay" id="photoOverlay">
+  <img src="images/me.jpg" alt="fullscreen photo">
+</div>
 
 <script src="app.js"></script>
 </body>
