@@ -343,3 +343,29 @@ body {
     bottom: 15px;
   }
 }
+
+/* ================= FIX BLACK EMPTY SPACE ================= */
+
+@media (max-width: 768px) {
+
+  body {
+    height: auto !important;
+    min-height: 100vh;
+  }
+
+  /* убираем "экранный режим" только на мобилке */
+  .page {
+    min-height: 100vh !important;
+  }
+
+  /* убираем пустоту от flex-экранов */
+  .split {
+    min-height: 100vh;
+  }
+
+  /* резюме без лишнего пространства */
+  .resume-grid {
+    min-height: 100vh;
+  }
+
+}
