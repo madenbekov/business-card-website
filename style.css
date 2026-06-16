@@ -5,7 +5,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   font-family: Arial, sans-serif;
   background: #000;
@@ -44,7 +44,7 @@ body {
 /* ================= LAYOUT ================= */
 .split {
   display: flex;
-  height: 100dvh;
+  min-height: 100dvh;
   position: relative;
   z-index: 2;
 }
@@ -481,4 +481,12 @@ body {
 
 .page.active {
   visibility: visible;
+}
+.page {
+  background: #050505;
+  overflow-y: auto;
+}
+
+html, body {
+  height: auto;
 }
